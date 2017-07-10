@@ -1,0 +1,9 @@
+<h2>List the number of Notes - {{nbNotes}}</h2>
+
+<ul class="list-unstyled">
+  <li class="media my4" *ngFor="let note of notes">
+    ID: {{note.id}}<br />
+    Title: {{note.title}}<br />
+    Description: {{note.description}}
+  </li>
+</ul>
