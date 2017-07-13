@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NotesService} from '../service/notes.service';
+import { Note} from '../service/Note';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-note-detail',
@@ -7,16 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteDetailComponent implements OnInit {
 
-  note =
-    {
-      id: "1",
-      title: "Title 1",
-      description: "Descption NUmber 1"
-    }
+  private note: Note = new Note();
 
-  constructor() { }
+
+  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService) { }
 
   ngOnInit() {
+    this.route.params
+      .map(params => params['noteId'])
+      .switchMap(id => this.notesService.getNote(id))
+      .subscribe(note => this.note = note);
+  }
+
+
+
+  delete() {
+    //invoke our REST API
+    this.router.navigate(['/note-list']);
   }
 
 }

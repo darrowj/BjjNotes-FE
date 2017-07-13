@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NotesService} from '../service/notes.service';
+import { Note} from '../service/Note';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-note-list',
@@ -9,23 +12,13 @@ export class NoteListComponent implements OnInit {
 
   private nbNotes: number = 2;
 
-  notes = [
-    {
-      id: "1",
-      title: "Title 1",
-      description: "Descption NUmber 1"
-    },
-    {
-      id: "2",
-      title: "Title 2",
-      description: "Descption NUmber 2"
-    }
-  ]
+  private notes: Note[];
 
 
-  constructor() { }
+  constructor(private notesService: NotesService) { }
 
   ngOnInit() {
+    this.notesService.getNotes().subscribe(notes => this.notes = notes);
   }
 
 }

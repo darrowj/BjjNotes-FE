@@ -2,8 +2,9 @@
 
 <ul class="list-unstyled">
   <li class="media my4" *ngFor="let note of notes">
-    ID: {{note.id}}<br />
-    Title: {{note.title}}<br />
-    Description: {{note.description}}
+    <div class="media-body">
+      <h5 class="mt-0 mb-1"><a [routerLink]="['/note-detail', note.id]">{{note.title}}</a></h5>
+      Description: {{note.description}}
+    </div>>
   </li>
 </ul>

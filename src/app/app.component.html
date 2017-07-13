@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="">List</a>
+        <a class="nav-link" [routerLink]="['/note-list']">List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Create</a>
+        <a class="nav-link" [routerLink]="['/note-form']" >Create</a>
       </li>
     </ul>
   </div>
@@ -18,10 +18,8 @@
 
 <div class="container">
   <div class="jumbotron">
-    <app-note-form></app-note-form>
-    <app-note-detail></app-note-detail>
-    <app-note-list></app-note-list>
+    <router-outlet></router-outlet>
   </div>
 </div>
 
-<router-outlet></router-outlet>
+
