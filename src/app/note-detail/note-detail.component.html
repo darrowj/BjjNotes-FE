@@ -1,5 +1,5 @@
 <h2>Detail of a Note</h2>
-<form (ngSubmit)="delete()">
+<form>
 <div class="form-group row">
   <label class="col-2 col-form-label">ID</label>
   <div class="col-10">
@@ -19,7 +19,9 @@
   </div>
 </div>
 
-<button type="submit" class="btn btn-primary">Delete</button>
-<a class="btn btn-secondary" href="" role="button">Back</a>
+<button type="button" class="btn btn-primary" (click)="destroyNote(note.id)">Delete</button>
 
+  <a class="btn btn-secondary" href="" role="button">Back</a>
+  <br />
+  <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
   </form>

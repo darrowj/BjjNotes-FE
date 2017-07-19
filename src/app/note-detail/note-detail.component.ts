@@ -12,7 +12,7 @@ import 'rxjs/Rx';
 export class NoteDetailComponent implements OnInit {
 
   private note: Note = new Note();
-
+  errorMessage: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService) { }
 
@@ -23,11 +23,19 @@ export class NoteDetailComponent implements OnInit {
       .subscribe(note => this.note = note);
   }
 
+  destroyNote(noteId: string){
+    this.notesService.deleteNoteById(noteId)
+      .subscribe((status: string) => {
+          console.log("Status returned from the service is: " + status)
+          if (status) {
+            this.router.navigate(['/note-list']);
+          }
+          else {
+            this.errorMessage = 'Unable to delete BJJ Note';
+          }
+        },
+        (err) => console.log(err));
 
-
-  delete() {
-    //invoke our REST API
-    this.router.navigate(['/note-list']);
   }
 
 }
