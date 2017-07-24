@@ -12,7 +12,8 @@ import { Note } from './note';
 @Injectable()
 export class NotesService {
 
-  private _notesUrl = 'http://localhost:8080/Notes';
+  private _notesUrl = 'http://127.0.0.1:8080/Notes';
+  private _noteCountUrl = 'http://localhost:8080/NoteCount';
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
@@ -39,11 +40,39 @@ export class NotesService {
 
   public deleteNoteById(noteId: string)  : Observable<string> {
     console.log("The URL being called is this in the note service: " + this._notesUrl + '/' + noteId);
-    //return this.http.delete(this._notesUrl + '/' + noteId).catch(this.handleError).subscribe((success) => {this.getNotes()});
     return this.http.delete(this._notesUrl  + '/' + noteId)
       .map((res: Response) => res)
       .catch(this.handleError);
   }
+
+  getNoteCount(): Observable<string> {
+    return this.http.get(this._noteCountUrl)
+      .map((res: Response) => res.text())
+      .catch(this.handleError);
+  }
+
+  insertNote(note: Note) : Observable<Note> {
+    return this.http.post(this._notesUrl, note)
+      .map((res: Response) => {
+        let note = res.json();
+        console.log('Insert Note status: ' + note);
+        return note;
+      })
+      .catch(this.handleError);
+  }
+
+  updateNote(note: Note) : Observable<Note> {
+    console.log('Update Note here is the note ID: ' + note.id);
+    console.log('Update Note itself: ' + note);
+    return this.http.put(this._notesUrl, note)
+      .map((res: Response) => {
+        console.log('Update Note return: ' + res.json());
+        let note = res.json();
+        return note;
+      })
+      .catch(this.handleError);
+  }
+
 
 
   private handleError(error: Response) {

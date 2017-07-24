@@ -11,8 +11,9 @@ import 'rxjs/Rx';
 })
 export class NoteListComponent implements OnInit, OnDestroy, AfterContentInit {
 
-  private nbNotes: number = 2;
-  private subscription: ISubscription;
+  private nbNotes: string;
+  private getNotesSubscription: ISubscription;
+  private getNoteCountSubscription: ISubscription;
   private notes: Note[];
 
 
@@ -20,12 +21,14 @@ export class NoteListComponent implements OnInit, OnDestroy, AfterContentInit {
 
   ngOnInit() {
     console.log("ngOnInit() called");
-    this.subscription = this.notesService.getNotes().subscribe(notes => this.notes = notes);
+    this.getNotesSubscription = this.notesService.getNotes().subscribe(notes => this.notes = notes);
+    this.getNoteCountSubscription = this.notesService.getNoteCount().subscribe(count => this.nbNotes = count);
   }
 
   ngOnDestroy() {
     console.log("ngOnDestroy() called");
-    this.subscription.unsubscribe();
+    this.getNotesSubscription.unsubscribe();
+    this.getNoteCountSubscription.unsubscribe();
   }
 
   ngAfterContentInit() {

@@ -38,4 +38,16 @@ export class NoteDetailComponent implements OnInit {
 
   }
 
+  submitUpdateNote(note: Note) {
+    this.notesService.updateNote(note)
+      .subscribe((note: Note) => {
+          if (note) {
+            this.router.navigate(['/note-list']);
+          } else {
+            this.errorMessage = 'Unable to save BJJ Note';
+          }
+        },
+        (err: any) => console.log(err));
+  }
+
 }

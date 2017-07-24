@@ -1,6 +1,6 @@
 <h2>Create a Note</h2>
 
-<form>
+<form (ngSubmit)="submitNewNote()" #noteForm="ngForm" class="editForm" novalidate>
   <div class="form-group row">
     <label class="col-2 col-form-label">ID</label>
     <div class="col-10">
@@ -21,7 +21,7 @@
   </div>
 
 
-  <button type="submit" class="btn btn-primary">Delete</button>
+  <button type="submit" class="btn btn-primary">Create</button>
   <a class="btn btn-secondary" [routerLink]="['/note-list']" role="button">Cancel</a>
 
 </form>
