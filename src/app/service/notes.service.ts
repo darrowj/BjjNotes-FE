@@ -19,10 +19,6 @@ export class NotesService {
   constructor(private http: Http) { }
 
   getNotes(): Observable<Note[]> {
-    //return this.http.get(this._notesUrl)
-    //  .map((response: Response) => <Note[]> response.json())
-    //  .do(data => console.log('All Get Notes: ' +  JSON.stringify(data)))
-    //  .catch(this.handleError);
     return this.http.get(this._notesUrl)
       .map((res: Response) => {
         let notes = res.json();
@@ -33,13 +29,12 @@ export class NotesService {
   }
 
   getNote(id: string): Observable<Note> {
-    return this.getNotes()
-      .map((notes: Note[]) => notes.find(n => n.id === id))
+    return this.http.get(this._notesUrl  + '/' + id)
+      .map((res: Response) => res.json())
       .catch(this.handleError);
   }
 
   public deleteNoteById(noteId: string)  : Observable<string> {
-    console.log("The URL being called is this in the note service: " + this._notesUrl + '/' + noteId);
     return this.http.delete(this._notesUrl  + '/' + noteId)
       .map((res: Response) => res)
       .catch(this.handleError);
@@ -62,8 +57,6 @@ export class NotesService {
   }
 
   updateNote(note: Note) : Observable<Note> {
-    console.log('Update Note here is the note ID: ' + note.id);
-    console.log('Update Note itself: ' + note);
     return this.http.put(this._notesUrl, note)
       .map((res: Response) => {
         console.log('Update Note return: ' + res.json());

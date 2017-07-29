@@ -5,11 +5,11 @@ import { Note} from '../service/Note';
 import 'rxjs/Rx';
 
 @Component({
-  selector: 'app-note-detail',
-  templateUrl: './note-detail.component.html',
+  selector: 'app-note-edit',
+  templateUrl: './note-edit.component.html',
   styles: []
 })
-export class NoteDetailComponent implements OnInit {
+export class NoteEditComponent implements OnInit {
 
   private note: Note = new Note();
   errorMessage: string;
@@ -19,23 +19,8 @@ export class NoteDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .map(params => params['noteId'])
-      .switchMap(noteId => this.notesService.getNote(noteId))
+      .switchMap(id => this.notesService.getNote(id))
       .subscribe(note => this.note = note);
-  }
-
-  destroyNote(noteId: string){
-    this.notesService.deleteNoteById(noteId)
-      .subscribe((status: string) => {
-          console.log("Status returned from the service is: " + status)
-          if (status) {
-            this.router.navigate(['/note-list']);
-          }
-          else {
-            this.errorMessage = 'Unable to delete BJJ Note';
-          }
-        },
-        (err) => console.log(err));
-
   }
 
   submitUpdateNote(note: Note) {
