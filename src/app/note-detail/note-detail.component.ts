@@ -7,7 +7,9 @@ import 'rxjs/Rx';
 @Component({
   selector: 'app-note-detail',
   templateUrl: './note-detail.component.html',
-  styles: []
+  styles: [`
+    em { float:right; color:#E05C67; padding-left:10px; }
+  `]
 })
 export class NoteDetailComponent implements OnInit {
 
@@ -26,7 +28,7 @@ export class NoteDetailComponent implements OnInit {
   destroyNote(noteId: string){
     this.notesService.deleteNoteById(noteId)
       .subscribe((status: string) => {
-          console.log("Status returned from the service is: " + status)
+          //console.log("Status returned from the service is: " + status)
           if (status) {
             this.router.navigate(['/note-list']);
           }
@@ -39,6 +41,7 @@ export class NoteDetailComponent implements OnInit {
   }
 
   submitUpdateNote(note: Note) {
+    //console.log(note)
     this.notesService.updateNote(note)
       .subscribe((note: Note) => {
           if (note) {
