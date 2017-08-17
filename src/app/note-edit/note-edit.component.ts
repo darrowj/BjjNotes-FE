@@ -24,6 +24,7 @@ export class NoteEditComponent implements OnInit {
   }
 
   submitUpdateNote(note: Note) {
+    //console.log(note)
     this.notesService.updateNote(note)
       .subscribe((note: Note) => {
           if (note) {

@@ -1,31 +1,25 @@
 <h2>Detail of a Note</h2>
-<form #noteForm="ngForm" class="editForm" (ngSubmit)="submitUpdateNote(noteForm.value)" novalidate>
 <div class="form-group row">
   <label class="col-2 col-form-label">ID</label>
-  <div class="col-10">
-    <em *ngIf="noteForm.controls.id?.invalid && (noteForm.controls.id?.touched || mouseoverUpdate)">Required</em>
-    <input class="form-control" type="text" [(ngModel)]="note.id" name="id" id="id" required>
+  <div class="col-10 text-primary">
+    {{note.id}}
   </div>
 </div>
 <div class="form-group row">
   <label class="col-2 col-form-label">Title</label>
-  <div class="col-10">
-    <em *ngIf="noteForm.controls.title?.invalid && (noteForm.controls.title?.touched || mouseoverUpdate)">Required</em>
-    <input class="form-control" type="text" [(ngModel)]="note.title" name="title" id="title" required>
+  <div class="col-10 text-primary">
+    {{note.title}}
   </div>
 </div>
 <div class="form-group row">
   <label class="col-2 col-form-label">Description</label>
-  <div class="col-10">
-    <textarea class="form-control" rows="3" name="description" id="description" [(ngModel)]="note.description">{{note.description}}</textarea>
+  <div class="col-10 text-primary">
+    {{note.description}}
   </div>
 </div>
 
 <button type="button" class="btn btn-primary" (click)="destroyNote(note.id)">Delete</button>
-<span (mouseenter)="mouseoverUpdate=true" (mouseleave)="mouseoverUpdate=false">
-<button type="submit" [disabled]="noteForm.invalid" class="btn btn-primary">Update</button>
-</span>
+  <a class="btn btn-primary" [routerLink]="['/note-edit', note.id]">Edit</a>
   <a class="btn btn-secondary" href="" role="button">Back</a>
   <br />
   <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
-  </form>

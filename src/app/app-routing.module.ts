@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'note-list', component: NoteListComponent },
   { path: 'note-form', component: NoteFormComponent },
   { path: 'note-detail/:noteId', component: NoteDetailComponent },
+  { path: 'note-edit/:noteId', component: NoteEditComponent },
   { path: '404', component: Error404Component },
 ];
 

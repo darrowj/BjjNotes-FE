@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotesService} from '../service/notes.service';
-import { Note} from '../service/Note';
+import { LookupService} from '../service/lookup.service';
+import { Note } from '../service/Note';
+import { Lookup } from '../service/Lookup';
 import 'rxjs/Rx';
 
 @Component({
@@ -17,9 +19,11 @@ export class NoteFormComponent implements OnInit {
       title: "Enter Title Here",
       description: "Enter Desciption Here"
     }
+  private lookup: Lookup;
+
   errorMessage: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, private lookupService: LookupService) { }
 
   submitNewNote() {
 
@@ -36,6 +40,8 @@ export class NoteFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.lookupService.getLookup("Guards").subscribe(lookups => this.lookup = lookups);
+    console.log(this.lookup);
   }
 
 }

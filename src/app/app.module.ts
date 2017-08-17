@@ -9,6 +9,7 @@ import { NoteListComponent } from './note-list/note-list.component';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { NoteFormComponent } from './note-form/note-form.component';
 import { NotesService } from './service/notes.service';
+import { LookupService } from './service/lookup.service';
 import { NoteEditComponent } from "./note-edit/note-edit.component";
 import { Error404Component } from "./errors/404.component";
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
@@ -28,7 +29,7 @@ import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service
     AppRoutingModule,
     FormsModule
   ],
-  providers: [NotesService, BjjNoteRouteActivator],
+  providers: [NotesService, LookupService, BjjNoteRouteActivator],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
