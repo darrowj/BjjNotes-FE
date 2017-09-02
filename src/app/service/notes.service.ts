@@ -47,6 +47,7 @@ export class NotesService {
   }
 
   insertNote(note: Note) : Observable<Note> {
+    console.log("This is the note being submitted: " + note.guard);
     return this.http.post(this._notesUrl, note)
       .map((res: Response) => {
         let note = res.json();

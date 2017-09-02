@@ -19,7 +19,8 @@ export class NoteFormComponent implements OnInit {
       title: "Enter Title Here",
       description: "Enter Desciption Here"
     }
-  private lookup: Lookup;
+
+  private lookup: any;
 
   errorMessage: string;
 
@@ -40,8 +41,7 @@ export class NoteFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.lookupService.getLookup("Guards").subscribe(lookups => this.lookup = lookups);
+    this.lookupService.getLookup("Guards").subscribe(lookup => this.lookup = lookup);
     console.log(this.lookup);
   }
-
 }
