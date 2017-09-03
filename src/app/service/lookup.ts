@@ -5,6 +5,6 @@ export class Name {
 export class Lookup {
   public id?: string;
   public title: string;
-  public names: Name[];
+  public names: string[][];
 }
 

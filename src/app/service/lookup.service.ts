@@ -13,7 +13,7 @@ import { Lookup } from './lookup';
 export class LookupService {
 
   private _lookupUrl = 'http://127.0.0.1:8080/Lookup';
-  private lookup: any;
+  //private lookup: Lookup = new Lookup();
 
   constructor(private http: Http) { }
 
@@ -29,8 +29,8 @@ export class LookupService {
 
   getLookup(title: string): Observable<Lookup> {
     return  this.http.get(this._lookupUrl   + '/' + title)
-      .map(response => response.json() as Lookup)
-      .catch(this.handleError)
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
 
 
 

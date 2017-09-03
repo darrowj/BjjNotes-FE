@@ -1,5 +1,4 @@
 <h2>Create a Note</h2>
-
 <form (ngSubmit)="submitNewNote()" #noteForm="ngForm" class="editForm" novalidate>
   <div class="form-group row">
     <label for="id" class="col-2 col-form-label">ID</label>
@@ -52,18 +51,7 @@
     <label for="guard" class="col-2 col-form-label">Guard</label>
     <div class="col-10">
       <select class="form-control" [(ngModel)]="note.guard" name="guard" id="guard" >
-        <option value="Butter Fly">Butter Fly</option>
-        <option value="Closed Guard">Closed Guard</option>
-        <option value="Deep Half Guard">Deep Half Guard</option>
-        <option value="De La Riva">De La Riva"</option>
-        <option value="Half Guard">Half Guard</option>
-        <option value="Open Guard">Open Guard</option>
-        <option value="Spider Guard">Spider Guard</option>
-        <option value="Inverted Guard">Inverted Guard</option>
-        <option value="Quarter Guard">Quarter Guard</option>
-        <option value="Reverse De La Riva">Reverse De La Riva</option>
-        <option value="Turtle Guard">Turtle Guard</option>
-        <option value="X-Guard">X-Guard</option>
+        <option *ngFor="let guard of lookup.names"  [value]="guard">{{guard}}</option>
       </select>
     </div>
   </div>

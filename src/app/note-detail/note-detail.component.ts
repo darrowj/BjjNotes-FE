@@ -23,6 +23,7 @@ export class NoteDetailComponent implements OnInit {
       .map(params => params['noteId'])
       .switchMap(noteId => this.notesService.getNote(noteId))
       .subscribe(note => this.note = note);
+      //console.log(this.note.title);
   }
 
   destroyNote(noteId: string){

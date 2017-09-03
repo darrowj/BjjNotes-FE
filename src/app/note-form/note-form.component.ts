@@ -20,8 +20,7 @@ export class NoteFormComponent implements OnInit {
       description: "Enter Desciption Here"
     }
 
-  private lookup: any;
-
+  private lookup: Lookup = new Lookup();
   errorMessage: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, private lookupService: LookupService) { }
