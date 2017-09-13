@@ -1,49 +1,32 @@
 <h2>Create a Note</h2>
 <form (ngSubmit)="submitNewNote()" #noteForm="ngForm" class="editForm" novalidate>
-  <div class="form-group row">
-    <label for="id" class="col-2 col-form-label">ID</label>
-    <div class="col-10">
-      <input class="form-control" type="text" [(ngModel)]="note.id" name="id" id="id">
-    </div>
-  </div>
-  <div class="form-group row">
+   <div class="form-group row">
     <label for="title" class="col-2 col-form-label">Title</label>
     <div class="col-10">
       <input class="form-control" type="text" [(ngModel)]="note.title" name="title" id="title">
     </div>
   </div>
   <div class="form-group row">
-    <label for="posture" class="col-2 col-form-label">Starting Position</label>
+    <label for="engagement" class="col-2 col-form-label">Engagement</label>
     <div class="col-10">
-      <select class="form-control" [(ngModel)]="note.posture" name="posture" id="posture" >
-        <option value="Attacking">Attacking</option>
-        <option value="Defending">Defending</option>
+      <select class="form-control" [(ngModel)]="note.engagement" name="engagement" id="engagement" >
+        <option *ngFor="let engagement of engagement.names"  [value]="engagement">{{engagement}}</option>
       </select>
     </div>
   </div>
   <div class="form-group row">
-    <label for="startingPosition" class="col-2 col-form-label">Starting Position</label>
+    <label for="startingPosition" class="col-2 col-form-label">Starting Posture</label>
     <div class="col-10">
-      <select class="form-control" [(ngModel)]="note.startingPosition" name="startingPosition" id="startingPosition" >
-        <option value="Bottom">Bottom</option>
-        <option value="Scramble">Scramble</option>
-        <option value="Standing">Standing</option>
-        <option value="Top">Top</option>
+      <select class="form-control" [(ngModel)]="note.posture" name="startingPosition" id="startingPosition" >
+        <option *ngFor="let posture of postures.names"  [value]="posture">{{posture}}</option>
       </select>
     </div>
   </div>
   <div class="form-group row">
-    <label for="offensivePosition" class="col-2 col-form-label">Starting Position</label>
+    <label for="offensivePosition" class="col-2 col-form-label">Offensive Position</label>
     <div class="col-10">
       <select class="form-control" [(ngModel)]="note.offensivePosition" name="offensivePosition" id="offensivePosition" >
-        <option value="50-50">50-50</option>
-        <option value="Back Control">Back Control</option>
-        <option value="Full Mount">Full Mount</option>
-        <option value="Knee on Belly">Knee on Belly</option>
-        <option value="North-South">Noth-South</option>
-        <option value="Side Control">Side Control</option>
-        <option value="S-Mount">S-Mount</option>
-        <option value="Turtle Top">Turtle Top</option>
+        <option *ngFor="let position of offensivePositions.names"  [value]="position">{{position}}</option>
       </select>
     </div>
   </div>
@@ -51,7 +34,15 @@
     <label for="guard" class="col-2 col-form-label">Guard</label>
     <div class="col-10">
       <select class="form-control" [(ngModel)]="note.guard" name="guard" id="guard" >
-        <option *ngFor="let guard of lookup.names"  [value]="guard">{{guard}}</option>
+        <option *ngFor="let guard of guards.names"  [value]="guard">{{guard}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="sweep" class="col-2 col-form-label">Sweep</label>
+    <div class="col-10">
+      <select class="form-control" [(ngModel)]="note.sweep" name="sweep" id="sweep" >
+        <option *ngFor="let sweep of sweeps.names"  [value]="sweep">{{sweep}}</option>
       </select>
     </div>
   </div>
@@ -59,44 +50,11 @@
     <label for="submission" class="col-2 col-form-label">Submission</label>
     <div class="col-10">
       <select class="form-control" [(ngModel)]="note.submission" name="submission" id="submission" >
-        <option value="Americana">Americana</option>
-        <option value="Ankle Lock">Ankle Lock</option>
-        <option value="Arm Triangle">Arm Triangle</option>
-        <option value="Armbar">Armbar</option>
-        <option value="Banana Split">Banana Split</option>
-        <option value="Baseball Choke">Baseball Choke</option>
-        <option value="Bicep Slicer">Bicep Slicer</option>
-        <option value="Bow & Arrow">Bow & Arrow</option>
-        <option value="Brabo Choke">Brabo Choke</option>
-        <option value="Bulldog Choke">Bulldog Choke</option>
-        <option value="Calf Slicer">Calf Slicer</option>
-        <option value="Clock Choke">Clock Choke</option>
-        <option value="Collar Choke">Collar Choke</option>
-        <option value="Cutter choke">Cutter Choke</option>
-        <option value="Estima Lock">Estima Lock</option>
-        <option value="Ezekiel Choke">Ezekiel Choke</option>
-        <option value="Gogoplata">Gogoplata</option>
-        <option value="Guillotine">Guillotine</option>
-        <option value="Headlock">Headlock</option>
-        <option value="Heel Hook">Heel Hook</option>
-        <option value="Kimura">Kimura</option>
-        <option value="Kneebar">Kneebar</option>
-        <option value="Lapel Choke">Lapel Choke</option>
-        <option value="Loop Choke">Loop Choke</option>
-        <option value="North-South Choke">North-South Choke</option>
-        <option value="Omoplata">Omoplata</option>
-        <option value="Pressure">Pressure</option>
-        <option value="Punch choke">Punch choke</option>
-        <option value="Rear Naked Choke">Rear Naked Choke</option>
-        <option value="Shoulder Lock">Shoulder Lock</option>
-        <option value="Smother">Smother</option>
-        <option value="Toe Hold">Toe Hold</option>
-        <option value="Triangle">Triangle</option>
-        <option value="Twister">Twister</option>
-        <option value="Wrist Lock">Wrist Lock</option>
+        <option *ngFor="let submission of submissions.names"  [value]="submission">{{submission}}</option>
       </select>
     </div>
   </div>
+
   <div class="form-group row">
     <label for="description" class="col-2 col-form-label">Description</label>
     <div class="col-10">

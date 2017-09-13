@@ -4,6 +4,7 @@ import { NotesService} from '../service/notes.service';
 import { LookupService} from '../service/lookup.service';
 import { Note } from '../service/Note';
 import { Lookup } from '../service/Lookup';
+import { DatePipe } from '@angular/common';
 import 'rxjs/Rx';
 
 @Component({
@@ -13,14 +14,26 @@ import 'rxjs/Rx';
 })
 export class NoteFormComponent implements OnInit {
 
-  private note =
+  note =
     {
       id: null,
       title: "Enter Title Here",
-      description: "Enter Desciption Here"
+      description: "Enter Desciption Here",
+      engagement: "",
+      guard: "",
+      posture: "",
+      offensivePosition: "",
+      sweep: "",
+      submission: ""
     }
 
-  private lookup: Lookup = new Lookup();
+  engagement: Lookup = new Lookup();
+  guards: Lookup = new Lookup();
+  postures: Lookup = new Lookup();
+  offensivePositions: Lookup = new Lookup();
+  sweeps: Lookup = new Lookup();
+  submissions: Lookup = new Lookup();
+
   errorMessage: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, private lookupService: LookupService) { }
@@ -40,7 +53,11 @@ export class NoteFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.lookupService.getLookup("Guards").subscribe(lookup => this.lookup = lookup);
-    console.log(this.lookup);
+    this.lookupService.getLookup("Engagement").subscribe(lookup => this.engagement = lookup);
+    this.lookupService.getLookup("Guards").subscribe(lookup => this.guards = lookup);
+    this.lookupService.getLookup("Posture").subscribe(lookup => this.postures = lookup);
+    this.lookupService.getLookup("OffensivePosition").subscribe(lookup => this.offensivePositions = lookup);
+    this.lookupService.getLookup("Sweeps").subscribe(lookup => this.sweeps = lookup);
+    this.lookupService.getLookup("Submissions").subscribe(lookup => this.submissions = lookup);
   }
 }

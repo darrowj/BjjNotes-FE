@@ -1,10 +1,13 @@
 export class Note {
   id?: string;
   title: string;
+  engagement?: string;
   posture?: string;
   guard?: string;
   offensivePosition?: string;
-  position?: string;
+  sweep?: string;
   submission?: string;
   description: string;
+  timestamp?: string
 }
+

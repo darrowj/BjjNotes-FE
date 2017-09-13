@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NotesService} from '../service/notes.service';
 import { Note} from '../service/Note';
 import 'rxjs/Rx';
+import { Lookup } from '../service/Lookup';
+import { LookupService} from '../service/lookup.service';
 
 @Component({
   selector: 'app-note-edit',
@@ -11,12 +13,25 @@ import 'rxjs/Rx';
 })
 export class NoteEditComponent implements OnInit {
 
-  private note: Note = new Note();
+  note: Note = new Note();
+  engagements: Lookup = new Lookup();
+  guards: Lookup = new Lookup();
+  postures: Lookup = new Lookup();
+  offensivePositions: Lookup = new Lookup();
+  sweeps: Lookup = new Lookup();
+  submissions: Lookup = new Lookup();
   errorMessage: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, private lookupService: LookupService) { }
 
   ngOnInit() {
+    this.lookupService.getLookup("Engagement").subscribe(lookup => this.engagements = lookup);
+    this.lookupService.getLookup("Guards").subscribe(lookup => this.guards = lookup);
+    this.lookupService.getLookup("Posture").subscribe(lookup => this.postures = lookup);
+    this.lookupService.getLookup("OffensivePosition").subscribe(lookup => this.offensivePositions = lookup);
+    this.lookupService.getLookup("Sweeps").subscribe(lookup => this.sweeps = lookup);
+    this.lookupService.getLookup("Submissions").subscribe(lookup => this.submissions = lookup);
+    console.log("The engagement tiotle is  -- " + this.engagements.title)
     this.route.params
       .map(params => params['noteId'])
       .switchMap(id => this.notesService.getNote(id))
@@ -34,6 +49,7 @@ export class NoteEditComponent implements OnInit {
           }
         },
         (err: any) => console.log(err));
+
   }
 
 }

@@ -12,7 +12,7 @@ import { Lookup } from './lookup';
 @Injectable()
 export class LookupService {
 
-  private _lookupUrl = 'http://127.0.0.1:8080/Lookup';
+  private _lookupUrl = 'http://localhost:8080/Lookup';
   //private lookup: Lookup = new Lookup();
 
   constructor(private http: Http) { }

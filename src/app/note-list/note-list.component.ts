@@ -11,10 +11,10 @@ import 'rxjs/Rx';
 })
 export class NoteListComponent implements OnInit, OnDestroy, AfterContentInit {
 
-  private nbNotes: string;
+  nbNotes: string;
   private getNotesSubscription: ISubscription;
   private getNoteCountSubscription: ISubscription;
-  private notes: Note[];
+  notes: Note[];
 
 
   constructor(private notesService: NotesService) { }

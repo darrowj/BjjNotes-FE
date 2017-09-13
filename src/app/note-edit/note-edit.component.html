@@ -1,28 +1,77 @@
 <h2>Update Note</h2>
 <form #noteForm="ngForm" class="editForm" (ngSubmit)="submitUpdateNote(noteForm.value)" novalidate>
-  <div class="form-group row">
-    <label class="col-2 col-form-label">ID</label>
-    <div class="col-10">
-      <em *ngIf="noteForm.controls.id?.invalid && (noteForm.controls.id?.touched || mouseoverUpdate)">Required</em>
-      <input class="form-control" type="text" [(ngModel)]="note.id" name="id" id="id" required>
-    </div>
-  </div>
+  <input class="form-control" type="hidden" [(ngModel)]="note.id" name="id" id="id">
+
   <div class="form-group row">
     <label class="col-2 col-form-label">Title</label>
     <div class="col-10">
-      <em *ngIf="noteForm.controls.title?.invalid && (noteForm.controls.title?.touched || mouseoverUpdate)">Required</em>
+      <em *ngIf="noteForm.controls.title?.invalid && (noteForm.controls.title?.touched)">Required</em>
       <input class="form-control" type="text" [(ngModel)]="note.title" name="title" id="title" required>
     </div>
   </div>
+  <div class="form-group row">
+    <label for="engagement" class="col-2 col-form-label">Engagement</label>
+    <div class="col-10">
+      <select class="form-control" [(ngModel)]="note.engagement" name="engagement" id="engagement" >
+        <option value=""></option>
+        <option *ngFor="let engagement of engagements.names"  [value]="engagement">{{engagement}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="posture" class="col-2 col-form-label">Starting Posture</label>
+    <div class="col-10">
+      <select class="form-control" [(ngModel)]="note.posture" name="posture" id="posture" >
+        <option value=""></option>
+        <option *ngFor="let posture of postures.names"  [value]="posture">{{posture}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="offensivePosition" class="col-2 col-form-label">Offensive Position</label>
+    <div class="col-10">
+      <select class="form-control" [(ngModel)]="note.offensivePosition" name="offensivePosition" id="offensivePosition" >
+        <option value=""></option>
+        <option *ngFor="let position of offensivePositions.names"  [value]="position">{{position}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="guard" class="col-2 col-form-label">Guard</label>
+    <div class="col-10">
+      <select class="form-control" [(ngModel)]="note.guard" name="guard" id="guard" >
+        <option value=""></option>
+        <option *ngFor="let guard of guards.names"  [value]="guard">{{guard}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="sweep" class="col-2 col-form-label">Sweep</label>
+    <div class="col-10">
+      <select class="form-control" [(ngModel)]="note.sweep" name="sweep" id="sweep" >
+        <option value=""></option>
+        <option *ngFor="let sweep of sweeps.names"  [value]="sweep">{{sweep}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="submission" class="col-2 col-form-label">Submission</label>
+    <div class="col-10">
+      <select class="form-control" [(ngModel)]="note.submission" name="submission" id="submission" >
+        <option value=""></option>
+        <option *ngFor="let submission of submissions.names"  [value]="submission">{{submission}}</option>
+      </select>
+    </div>
+  </div>
+
   <div class="form-group row">
     <label class="col-2 col-form-label">Description</label>
     <div class="col-10">
       <textarea class="form-control" rows="3" name="description" id="description" [(ngModel)]="note.description">{{note.description}}</textarea>
     </div>
   </div>
-  <span (mouseenter)="mouseoverUpdate=true" (mouseleave)="mouseoverUpdate=false">
 <button type="submit" [disabled]="noteForm.invalid" class="btn btn-primary">Save Changes</button>
-</span>
+
   <a class="btn btn-secondary" href="" role="button">Back</a>
   <br />
   <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>

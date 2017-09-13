@@ -1,5 +1,17 @@
 <h2>List the number of Notes - {{nbNotes}}</h2>
+ <div class="row card-group">
+    <div class="col-6"  *ngFor="let note of notes">
+      <div class="card">
+        <h3 class="card-header"><a [routerLink]="['/note-detail', note.id]">{{note.title}}</a></h3>
+        <div class="card-block">
+          Description: {{note.description}}
+        </div>
+      </div>
+      <br />
+    </div>
+</div>
 
+<!--
 <ul class="list-unstyled">
   <li class="media my4" *ngFor="let note of notes">
     <div class="media-body">
@@ -8,3 +20,4 @@
     </div>>
   </li>
 </ul>
+-->

@@ -13,7 +13,7 @@ import 'rxjs/Rx';
 })
 export class NoteDetailComponent implements OnInit {
 
-  private note: Note = new Note();
+  note: Note = new Note();
   errorMessage: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService) { }

@@ -1,31 +1,18 @@
-<h2>Detail of a Note</h2>
-<div class="form-group row">
-  <label class="col-2 col-form-label">ID</label>
-  <div class="col-10 text-primary">
-    {{note.id}}
-  </div>
-</div>
-<div class="form-group row">
-  <label class="col-2 col-form-label">Title</label>
-  <div class="col-10 text-primary">
-    {{note.title}}
-  </div>
-</div>
-<div class="form-group row">
-  <label class="col-2 col-form-label">Guard</label>
-  <div class="col-10 text-primary">
-    {{note.guard}}
-  </div>
-</div>
-<div class="form-group row">
-  <label class="col-2 col-form-label">Description</label>
-  <div class="col-10 text-primary">
-    {{note.description}}
-  </div>
-</div>
 
-<button type="button" class="btn btn-primary" (click)="destroyNote(note.id)">Delete</button>
-  <a class="btn btn-primary" [routerLink]="['/note-edit', note.id]">Edit</a>
-  <a class="btn btn-secondary" href="" role="button">Back</a>
-  <br />
-  <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
+<div class="row card">
+  <h3 class="card-header text-primary">{{note.title}}</h3>
+  <div class="card-block">
+    <p *ngIf="note.engagement" class="card-text"><span class="font-weight-bold">Engagement</span>: <span class="text-primary">{{note.engagement}}</span></p>
+    <p *ngIf="note.posture" class="card-text"><span class="font-weight-bold">Starting Posture</span>: <span class="text-primary">{{note.posture}}</span></p>
+    <p *ngIf="note.offensivePosition" class="card-text"><span class="font-weight-bold">Offensive Position</span>: <span class="text-primary">{{note.offensivePosition}}</span></p>
+    <p *ngIf="note.guard" class="card-text"><span class="font-weight-bold">Guard</span>: <span class="text-primary">{{note.guard}}</span></p>
+    <p *ngIf="note.sweep" class="card-text"><span class="font-weight-bold">Sweep</span>: <span class="text-primary">{{note.sweep}}</span></p>
+    <p *ngIf="note.submission" class="card-text"><span class="font-weight-bold">Submission</span>: <span class="text-primary">{{note.submission}}</span></p>
+    <p class="card-text">{{note.description}}</p>
+    <button type="button" class="btn btn-primary" (click)="destroyNote(note.id)">Delete</button>
+    <a class="btn btn-primary" [routerLink]="['/note-edit', note.id]">Edit</a>
+    <a class="btn btn-secondary" href="" role="button">Back</a>
+    <br />
+    <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
+  </div>
+</div>

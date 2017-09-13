@@ -12,7 +12,7 @@ import { Note } from './note';
 @Injectable()
 export class NotesService {
 
-  private _notesUrl = 'http://127.0.0.1:8080/Notes';
+  private _notesUrl = 'http://localhost:8080/Notes';
   private _noteCountUrl = 'http://localhost:8080/NoteCount';
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
