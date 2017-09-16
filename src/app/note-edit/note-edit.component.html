@@ -1,7 +1,7 @@
 <h2>Update Note</h2>
 <form #noteForm="ngForm" class="editForm" (ngSubmit)="submitUpdateNote(noteForm.value)" novalidate>
   <input class="form-control" type="hidden" [(ngModel)]="note.id" name="id" id="id">
-
+  <input class="form-control" type="hidden" [(ngModel)]="note.created" name="created" id="created">
   <div class="form-group row">
     <label class="col-2 col-form-label">Title</label>
     <div class="col-10">

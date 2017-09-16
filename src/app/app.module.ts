@@ -11,6 +11,7 @@ import { NoteFormComponent } from './note-form/note-form.component';
 import { NotesService } from './service/notes.service';
 import { LookupService } from './service/lookup.service';
 import { NoteEditComponent } from "./note-edit/note-edit.component";
+import { LoginComponent } from "./user/login.component";
 import { Error404Component } from "./errors/404.component";
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
 
@@ -21,7 +22,8 @@ import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service
     NoteDetailComponent,
     NoteFormComponent,
     NoteEditComponent,
-    Error404Component
+    Error404Component,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

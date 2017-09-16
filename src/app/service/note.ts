@@ -8,6 +8,7 @@ export class Note {
   sweep?: string;
   submission?: string;
   description: string;
-  timestamp?: string
+  created?: string;
+  updated?: string;
 }
 

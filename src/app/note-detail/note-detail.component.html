@@ -9,6 +9,9 @@
     <p *ngIf="note.sweep" class="card-text"><span class="font-weight-bold">Sweep</span>: <span class="text-primary">{{note.sweep}}</span></p>
     <p *ngIf="note.submission" class="card-text"><span class="font-weight-bold">Submission</span>: <span class="text-primary">{{note.submission}}</span></p>
     <p class="card-text">{{note.description}}</p>
+    <div class="small mt-1 mb-3">
+      Created: {{note.created}}<span *ngIf="note.updated">  -- Updated: {{note.updated}}</span>
+    </div>
     <button type="button" class="btn btn-primary" (click)="destroyNote(note.id)">Delete</button>
     <a class="btn btn-primary" [routerLink]="['/note-edit', note.id]">Edit</a>
     <a class="btn btn-secondary" href="" role="button">Back</a>

@@ -1,4 +1,5 @@
 import {Component, OnInit, OnDestroy, AfterContentInit} from '@angular/core';
+import { TruncateModule } from 'ng2-truncate'
 import { ISubscription } from "rxjs/Subscription";
 import { NotesService} from '../service/notes.service';
 import { Note} from '../service/Note';
@@ -21,7 +22,7 @@ export class NoteListComponent implements OnInit, OnDestroy, AfterContentInit {
 
   ngOnInit() {
     console.log("ngOnInit() called");
-    this.getNotesSubscription = this.notesService.getNotes().subscribe(notes => this.notes = notes);
+    this.getNotesSubscription = this.notesService.getNotes().subscribe(notes => this.notes = notes.reverse());
     this.getNoteCountSubscription = this.notesService.getNoteCount().subscribe(count => this.nbNotes = count);
   }
 
