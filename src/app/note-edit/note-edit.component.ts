@@ -14,6 +14,7 @@ import { LookupService} from '../service/lookup.service';
 export class NoteEditComponent implements OnInit {
 
   note: Note = new Note();
+  categories: Lookup = new Lookup();
   engagements: Lookup = new Lookup();
   guards: Lookup = new Lookup();
   postures: Lookup = new Lookup();
@@ -25,13 +26,13 @@ export class NoteEditComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, private lookupService: LookupService) { }
 
   ngOnInit() {
+    this.lookupService.getLookup("Category").subscribe(lookup => this.categories = lookup);
     this.lookupService.getLookup("Engagement").subscribe(lookup => this.engagements = lookup);
     this.lookupService.getLookup("Guards").subscribe(lookup => this.guards = lookup);
     this.lookupService.getLookup("Posture").subscribe(lookup => this.postures = lookup);
     this.lookupService.getLookup("OffensivePosition").subscribe(lookup => this.offensivePositions = lookup);
     this.lookupService.getLookup("Sweeps").subscribe(lookup => this.sweeps = lookup);
     this.lookupService.getLookup("Submissions").subscribe(lookup => this.submissions = lookup);
-    console.log("The engagement tiotle is  -- " + this.engagements.title)
     this.route.params
       .map(params => params['noteId'])
       .switchMap(id => this.notesService.getNote(id))

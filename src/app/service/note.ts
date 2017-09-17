@@ -1,6 +1,7 @@
 export class Note {
   id?: string;
   title: string;
+  category?: string;
   engagement?: string;
   posture?: string;
   guard?: string;

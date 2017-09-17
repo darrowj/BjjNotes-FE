@@ -18,7 +18,8 @@ export class NoteFormComponent implements OnInit {
     {
       id: null,
       title: "Enter Title Here",
-      description: "Enter Desciption Here",
+      category: "",
+      description: "Enter Description Here",
       engagement: "",
       guard: "",
       posture: "",
@@ -27,6 +28,7 @@ export class NoteFormComponent implements OnInit {
       submission: ""
     }
 
+  categories: Lookup = new Lookup();
   engagement: Lookup = new Lookup();
   guards: Lookup = new Lookup();
   postures: Lookup = new Lookup();
@@ -53,11 +55,13 @@ export class NoteFormComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.lookupService.getLookup("Engagement").subscribe(lookup => this.engagement = lookup);
     this.lookupService.getLookup("Guards").subscribe(lookup => this.guards = lookup);
     this.lookupService.getLookup("Posture").subscribe(lookup => this.postures = lookup);
     this.lookupService.getLookup("OffensivePosition").subscribe(lookup => this.offensivePositions = lookup);
     this.lookupService.getLookup("Sweeps").subscribe(lookup => this.sweeps = lookup);
     this.lookupService.getLookup("Submissions").subscribe(lookup => this.submissions = lookup);
+    this.lookupService.getLookup("Category").subscribe(lookup => this.categories = lookup);
   }
 }

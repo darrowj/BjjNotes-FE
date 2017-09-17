@@ -2,6 +2,7 @@
 <div class="row card">
   <h3 class="card-header text-primary">{{note.title}}</h3>
   <div class="card-block">
+    <p *ngIf="note.category" class="card-text"><span class="font-weight-bold">Note Category</span>: <span class="text-primary">{{note.category}}</span></p>
     <p *ngIf="note.engagement" class="card-text"><span class="font-weight-bold">Engagement</span>: <span class="text-primary">{{note.engagement}}</span></p>
     <p *ngIf="note.posture" class="card-text"><span class="font-weight-bold">Starting Posture</span>: <span class="text-primary">{{note.posture}}</span></p>
     <p *ngIf="note.offensivePosition" class="card-text"><span class="font-weight-bold">Offensive Position</span>: <span class="text-primary">{{note.offensivePosition}}</span></p>
