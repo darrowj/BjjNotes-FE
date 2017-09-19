@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotesService} from '../service/notes.service';
+import {YouTubeService} from '../service/youtube.service';
+import { Observable } from 'rxjs/Observable';
 import { Note} from '../service/Note';
 import 'rxjs/Rx';
+import {Video} from "../service/Video";
 
 @Component({
   selector: 'app-note-detail',
@@ -14,16 +17,39 @@ import 'rxjs/Rx';
 export class NoteDetailComponent implements OnInit {
 
   note: Note = new Note();
+  results: Observable<any>;
+  videoSearchString: string;
   errorMessage: string;
+  searchCalled: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService) { }
+
+  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, public youtube: YouTubeService) { }
 
   ngOnInit() {
     this.route.params
       .map(params => params['noteId'])
       .switchMap(noteId => this.notesService.getNote(noteId))
       .subscribe(note => this.note = note);
-      //console.log(this.note.title);
+
+
+  }
+
+  ngAfterViewChecked() {
+    //console.log("This is the video search string 1: " + this.note )
+       if ((!this.searchCalled)&&(this.note.id != undefined)) {
+         this.subitYoutbeSearch(this.constructYoutubeSearchString(this.note))
+         this.searchCalled = true;
+
+       }
+
+  }
+
+  subitYoutbeSearch(searchString) {
+
+    //console.log("This is the video search string 3: " + searchString)
+    this.youtube.search(searchString)
+      .subscribe(videos => this.results = videos);
+
   }
 
   destroyNote(noteId: string){
@@ -52,6 +78,19 @@ export class NoteDetailComponent implements OnInit {
           }
         },
         (err: any) => console.log(err));
+  }
+
+  constructYoutubeSearchString(note: Note): string {
+    let searchString = "BJJ";
+    if (this.note.category) {searchString = searchString + " " + this.note.category}
+    if (this.note.engagement) {searchString = searchString + " " + this.note.engagement}
+    if (this.note.offensivePosition) {searchString = searchString + " " + this.note.offensivePosition}
+    if (this.note.posture) {searchString = searchString + " " + this.note.posture}
+    if (this.note.guard) {searchString = searchString + " " + this.note.guard}
+    if (this.note.sweep) {searchString = searchString + " " + this.note.sweep}
+    if (this.note.submission) {searchString = searchString + " " + this.note.submission}
+    //console.log("This is the video search string 2: " + searchString + "  Note ID " + this.note.id)
+    return searchString
   }
 
 }

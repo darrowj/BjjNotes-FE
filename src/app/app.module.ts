@@ -10,6 +10,7 @@ import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { NoteFormComponent } from './note-form/note-form.component';
 import { NotesService } from './service/notes.service';
 import { LookupService } from './service/lookup.service';
+import { YouTubeService } from './service/youtube.service';
 import { NoteEditComponent } from "./note-edit/note-edit.component";
 import { LoginComponent } from "./user/login.component";
 import { Error404Component } from "./errors/404.component";
@@ -31,7 +32,7 @@ import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service
     AppRoutingModule,
     FormsModule
   ],
-  providers: [NotesService, LookupService, BjjNoteRouteActivator],
+  providers: [NotesService, LookupService, BjjNoteRouteActivator, YouTubeService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
