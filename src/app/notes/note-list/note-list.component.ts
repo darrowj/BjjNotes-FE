@@ -1,8 +1,8 @@
 import {Component, OnInit, OnDestroy, AfterContentInit} from '@angular/core';
 import { TruncateModule } from 'ng2-truncate'
 import { ISubscription } from "rxjs/Subscription";
-import { NotesService} from '../service/notes.service';
-import { Note} from '../service/Note';
+import { NotesService} from '../../service/notes.service';
+import { Note} from '../../model/note';
 import 'rxjs/Rx';
 
 @Component({

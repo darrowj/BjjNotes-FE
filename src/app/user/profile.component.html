@@ -1,0 +1,59 @@
+<div>
+  <h1>Edit Your Profile </h1>
+  <hr>
+  <form #profileForm="ngForm" class="editForm" (ngSubmit)="submitNewProfile(profileForm.value)" novalidate>
+    <input class="form-control" type="hidden" [(ngModel)]="profile.id" name="id" id="id">
+    <input class="form-control" type="hidden" [(ngModel)]="profile.created" name="created" id="created">
+    <div class="form-group row">
+      <label for="firstName" class="col-2 col-form-label">First Name</label>
+      <div class="col-4">
+        <em *ngIf="profileForm.controls.firstName?.invalid && (profileForm.controls.firstName?.touched)">Required</em>
+        <input class="form-control" type="text" [(ngModel)]="profile.firstName" name="firstName" id="firstName" required>
+      </div>
+      <label for="lastName" class="col-2 col-form-label">Last Name</label>
+      <div class="col-4">
+        <em *ngIf="profileForm.controls.lastName?.invalid && (profileForm.controls.lastName?.touched)">Required</em>
+        <input class="form-control" type="text" [(ngModel)]="profile.lastName" name="lastName" id="lastName" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="yearborn" class="col-2 col-form-label">Year Born</label>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="profile.yearborn" name="yearborn" id="yearborn" required>
+      </div>
+      <label for="weight" class="col-2 col-form-label">Weight</label>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="profile.weigth" name="weight" id="weight" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="belt" class="col-2 col-form-label">Belt</label>
+      <div class="col-10">
+        <select class="form-control" [(ngModel)]="profile.belt" name="belt" id="belt" >
+          <option value=""></option>
+          <option value="White">White</option>
+          <option value="White">Blue</option>
+          <option value="White">Purple</option>
+          <option value="White">Brown</option>
+          <option value="White">Black</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="schoolname" class="col-2 col-form-label">School Name</label>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="profile.schoolname" name="schoolname" id="schoolname" required>
+      </div>
+      <label for="schoolLocation" class="col-2 col-form-label">School Location</label>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="profile.schoolLocation" name="schoolLocation" id="schoolLocation" required>
+      </div>
+    </div>
+    <button type="submit" [disabled]="profileForm.invalid" class="btn btn-primary">Save Changes</button>
+
+    <a class="btn btn-secondary" href="" role="button">Back</a>
+    <br />
+    <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
+  </form>
+
+</div>

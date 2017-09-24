@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotesService} from '../service/notes.service';
-import { LookupService} from '../service/lookup.service';
-import { Note } from '../service/Note';
-import { Lookup } from '../service/Lookup';
+import { NotesService} from '../../service/notes.service';
+import { LookupService} from '../../service/lookup.service';
+import { Note } from '../../model/note';
+import { Lookup } from '../../model/lookup';
 import { DatePipe } from '@angular/common';
 import 'rxjs/Rx';
 

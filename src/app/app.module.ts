@@ -5,14 +5,17 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoteListComponent } from './note-list/note-list.component';
-import { NoteDetailComponent } from './note-detail/note-detail.component';
-import { NoteFormComponent } from './note-form/note-form.component';
+import { NoteListComponent } from './notes/note-list/note-list.component';
+import { NoteDetailComponent } from './notes/note-detail/note-detail.component';
+import { NoteFormComponent } from './notes/note-create/note-form.component';
 import { NotesService } from './service/notes.service';
 import { LookupService } from './service/lookup.service';
 import { YouTubeService } from './service/youtube.service';
-import { NoteEditComponent } from "./note-edit/note-edit.component";
+import { AuthService } from "./service/authService"
+import { ProfileService} from "./service/profile.service"
+import { NoteEditComponent } from "./notes/note-edit/note-edit.component";
 import { LoginComponent } from "./user/login.component";
+import { ProfileComponent} from "./user/profile.component"
 import { Error404Component } from "./errors/404.component";
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
 
@@ -24,7 +27,8 @@ import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service
     NoteFormComponent,
     NoteEditComponent,
     Error404Component,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service
     AppRoutingModule,
     FormsModule
   ],
-  providers: [NotesService, LookupService, BjjNoteRouteActivator, YouTubeService ],
+  providers: [NotesService, LookupService, BjjNoteRouteActivator, YouTubeService, AuthService, ProfileService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

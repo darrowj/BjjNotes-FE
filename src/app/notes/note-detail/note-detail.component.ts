@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotesService} from '../service/notes.service';
-import {YouTubeService} from '../service/youtube.service';
+import { NotesService} from '../../service/notes.service';
+import {YouTubeService} from '../../service/youtube.service';
 import { Observable } from 'rxjs/Observable';
-import { Note} from '../service/Note';
+import { Note} from '../../model/note';
 import 'rxjs/Rx';
-import {Video} from "../service/Video";
+import {Video} from "../../model/Video";
 
 @Component({
   selector: 'app-note-detail',

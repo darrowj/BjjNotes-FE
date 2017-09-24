@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotesService} from '../service/notes.service';
-import { Note} from '../service/Note';
+import { NotesService} from '../../service/notes.service';
+import { Note} from '../../model/note';
 import 'rxjs/Rx';
-import { Lookup } from '../service/Lookup';
-import { LookupService} from '../service/lookup.service';
+import { Lookup } from '../../model/lookup';
+import { LookupService} from '../../service/lookup.service';
 
 @Component({
   selector: 'app-note-edit',

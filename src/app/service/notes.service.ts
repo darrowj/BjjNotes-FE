@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
-import { Note } from './note';
+import { Note } from '../model/note';
 
 @Injectable()
 export class NotesService {

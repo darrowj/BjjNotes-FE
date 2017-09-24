@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NoteListComponent} from './note-list/note-list.component'
-import { NoteFormComponent} from './note-form/note-form.component'
-import { NoteDetailComponent} from './note-detail/note-detail.component'
-import { NoteEditComponent} from './note-edit/note-edit.component'
+import { NoteListComponent} from './notes/note-list/note-list.component'
+import { NoteFormComponent} from './notes/note-create/note-form.component'
+import { NoteDetailComponent} from './notes/note-detail/note-detail.component'
+import { NoteEditComponent} from './notes/note-edit/note-edit.component'
 import { Error404Component } from "./errors/404.component";
 import { LoginComponent} from "./user/login.component"
+import { ProfileComponent } from "./user/profile.component"
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'note-detail/:noteId', component: NoteDetailComponent },
   { path: 'note-edit/:noteId', component: NoteEditComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'profile', component: ProfileComponent},
   { path: '404', component: Error404Component },
 
 ];
