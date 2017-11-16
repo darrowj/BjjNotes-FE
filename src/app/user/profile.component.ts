@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../service/authService'
 import {Profile} from "../model/profile";
 import {ProfileService} from "../service/profile.service";
@@ -22,10 +22,14 @@ export class ProfileComponent implements OnInit {
 
   errorMessage: string;
 
-  constructor(private router:Router, private authService:AuthService, private profileService: ProfileService) {}
+  constructor(private router:Router, private route: ActivatedRoute, private authService:AuthService, private profileService: ProfileService) {}
 
   ngOnInit() {
 
+    this.route.params
+      .map(params => params['profileId'])
+      .switchMap(id => this.profileService.getProfile(id))
+      .subscribe(profile => this.profile = profile);
   }
 
   cancel() {

@@ -6,7 +6,7 @@ export class Profile {
   userName: string;
   yearborn?: number;
   belt?: string;
-  weigth?: number;
+  weigth?: string;
   schoolLocation?: string;
   schoolname?: string;
   created?: string;

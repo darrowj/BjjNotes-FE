@@ -19,9 +19,11 @@ export class ProfileService {
   constructor(private http: Http) { }
 
   getProfile(id: string): Observable<Profile> {
+
     return this.http.get(this._profileUrl  + '/' + id)
       .map((res: Response) => res.json())
       .catch(this.handleError);
+
   }
 
   public deleteProfileById(noteId: string)  : Observable<string> {

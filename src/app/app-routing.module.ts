@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'note-edit/:noteId', component: NoteEditComponent },
   { path: 'login', component: LoginComponent},
   { path: 'profile', component: ProfileComponent},
+  { path: 'profile/:profileId', component: ProfileComponent},
   { path: '404', component: Error404Component },
 
 ];
