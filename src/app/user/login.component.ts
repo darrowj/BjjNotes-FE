@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-//import { AuthService } from './auth.service'
+import { AuthService } from '../service/authService'
 import { Router } from '@angular/router'
+import {Observable} from "rxjs/Observable";
 
 @Component({
   templateUrl: './login.component.html',
@@ -9,17 +10,36 @@ import { Router } from '@angular/router'
   `]
 })
 export class LoginComponent {
-  constructor(private router:Router) {
+
+  public user$ = this.authService.user;
+
+  constructor(private router:Router, private authService: AuthService) {
 
   }
 
   login(formValues) {
-    //this.authService.loginUser(formValues.userName, formValues.password)
-    this.router.navigate(['note-list'])
+    this.authService.loginUser(formValues.userName, formValues.password)
+      .subscribe(
+          success => this.router.navigate(['note-list']),
+        error => alert(error)
+      )
+
   }
 
   cancel() {
     this.router.navigate(['note-list'])
+  }
+
+  loginWithGoogle() {
+    this.authService.loginWithGoogle();
+  }
+
+  loginWithFacebook() {
+    this.authService.loginWithFacebook();
+  }
+
+  loginWithTwitter() {
+    this.authService.loginWithTwitter();
   }
 
 }

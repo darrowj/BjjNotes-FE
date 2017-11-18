@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from "@angular/http";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+
+// New imports to update based on AngularFire2 version 4
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +24,15 @@ import { ProfileComponent} from "./user/profile.component"
 import { Error404Component } from "./errors/404.component";
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyCT59Ad6E066OZlUaSn0pSjS8n97SeWzFU",
+  authDomain: "ngfbauth-7ccf1.firebaseapp.com",
+  databaseURL: "https://ngfbauth-7ccf1.firebaseio.com",
+  projectId: "ngfbauth-7ccf1",
+  storageBucket: "ngfbauth-7ccf1.appspot.com",
+  messagingSenderId: "865003744764"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +48,10 @@ import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [NotesService, LookupService, BjjNoteRouteActivator, YouTubeService, AuthService, ProfileService ],
   bootstrap: [AppComponent]
