@@ -11,6 +11,7 @@ export class AppComponent {
 
   public isLoggedIn;
   title = 'BJJ Notes';
+  user$ = this.authService.user;
 
   constructor(private authService: AuthService, private router: Router) {
     authService.isAuthenticated()

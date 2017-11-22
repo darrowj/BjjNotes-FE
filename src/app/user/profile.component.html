@@ -2,7 +2,7 @@
   <h1>Edit Your Profile </h1>
   <hr>
   <form #profileForm="ngForm" class="editForm" (ngSubmit)="submitNewProfile(profileForm.value)" novalidate>
-    <input class="form-control" type="hidden" [(ngModel)]="profile.id" name="id" id="id">
+    <input class="form-control" type="hidden" [(ngModel)]="profile.uid" name="uid" id="uid">
     <input class="form-control" type="hidden" [(ngModel)]="profile.created" name="created" id="created">
     <div class="form-group row">
       <label for="firstName" class="col-2 col-form-label">First Name</label>
@@ -21,9 +21,9 @@
       <div class="col-4">
         <input class="form-control" type="text" [(ngModel)]="profile.yearborn" name="yearborn" id="yearborn" required>
       </div>
-      <label for="weigth" class="col-2 col-form-label">Weight</label>
+      <label for="weight" class="col-2 col-form-label">Weight</label>
       <div class="col-4">
-        <input class="form-control" type="text" [(ngModel)]="profile.weigth" name="weigth" id="weigth" required>
+        <input class="form-control" type="text" [(ngModel)]="profile.weight" name="weight" id="weight" required>
       </div>
     </div>
     <div class="form-group row">

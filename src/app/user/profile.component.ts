@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../service/authService'
 import {Profile} from "../model/profile";
 import {ProfileService} from "../service/profile.service";
+import {async} from "rxjs/scheduler/async";
+import * as firebase from "firebase";
+import {AngularFireAuth} from "angularfire2/auth";
 
 
 @Component({
@@ -19,16 +22,21 @@ import {ProfileService} from "../service/profile.service";
 export class ProfileComponent implements OnInit {
 
   profile: Profile = new Profile();
-
+  //user$ = this.authService.user;
   errorMessage: string;
+  userId: string;
 
-  constructor(private router:Router, private route: ActivatedRoute, private authService:AuthService, private profileService: ProfileService) {}
+  constructor(private router:Router, private route: ActivatedRoute, private profileService: ProfileService, private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe(user => {
+      if(user) this.userId = user.uid
+      })
+  }
 
   ngOnInit() {
 
     this.route.params
       .map(params => params['profileId'])
-      .switchMap(id => this.profileService.getProfile(id))
+      .switchMap(uid => this.profileService.getProfile(uid))
       .subscribe(profile => this.profile = profile);
   }
 
@@ -53,8 +61,9 @@ export class ProfileComponent implements OnInit {
   }
 
   submitNewProfile() {
+      this.profile.uid = this.userId;
 
-    this.profileService.insertProfile(this.profile)
+      this.profileService.insertProfile(this.profile)
       .subscribe((profile: Profile) => {
           if (profile) {
             this.router.navigate(['/note-list']);

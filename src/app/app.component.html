@@ -23,7 +23,7 @@
       <a class="nav-link" (click)="logout()" [routerLink]="['/note-list']" *ngIf="isLoggedIn">Logout</a>
     </li>
     <li class="nav-item">
-      <a style="width: 100px;" class="nav-link" [routerLink]="['/profile']" *ngIf="isLoggedIn">Hi Jason</a>
+      <a style="min-width: 200px;" class="nav-link" [routerLink]="['/profile']" *ngIf="isLoggedIn">Hi {{(user$ | async)?.displayName}}</a>
     </li>
   </ul>
 </div>

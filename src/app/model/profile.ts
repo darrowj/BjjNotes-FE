@@ -1,12 +1,13 @@
 
 export class Profile {
-  id?: number;
+  id?: string;
+  uid: string;
   firstName: string;
   lastName: string;
   userName: string;
   yearborn?: number;
   belt?: string;
-  weigth?: string;
+  weight?: string;
   schoolLocation?: string;
   schoolname?: string;
   created?: string;

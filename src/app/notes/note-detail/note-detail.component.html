@@ -19,7 +19,7 @@
     <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
     <hr style="width: 100%; background-color: black; height: 1px; border-color : transparent;" />
     <div class="mt-3" *ngFor="let video of results; let i = index">
-      <h5>{{video.snippet.title}}</h5>
+      <h5><a target="_blank" href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}</a></h5>
       <p>{{video.snippet.description}}</p>
       <a target="_blank" href="https://www.youtube.com/watch?v={{video.id.videoId}}"><img [src]="video.snippet.thumbnails.default.url"/></a>
       <hr style="border: 1px dashed #D3D3D3;" />
