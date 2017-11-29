@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/note-list']">List</a>
+        <a class="nav-link" [routerLink]="['/note-list']" *ngIf="isLoggedIn">My Notes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/note-form']" >Create</a>
+        <a class="nav-link" [routerLink]="['/note-form']" *ngIf="isLoggedIn">Create Note</a>
       </li>
     </ul>
   </div>
@@ -20,10 +20,10 @@
       <a class="nav-link" [routerLink]="['/login']" *ngIf="!isLoggedIn">Login</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" (click)="logout()" [routerLink]="['/note-list']" *ngIf="isLoggedIn">Logout</a>
+      <a class="nav-link" (click)="logout()" *ngIf="isLoggedIn">Logout</a>
     </li>
     <li class="nav-item">
-      <a style="min-width: 200px;" class="nav-link" [routerLink]="['/profile']" *ngIf="isLoggedIn">Hi {{(user$ | async)?.displayName}}</a>
+      <a style="min-width: 200px;" class="nav-link" (click)="getProfile()" *ngIf="isLoggedIn">Hi {{(user$ | async)?.displayName}}</a>
     </li>
   </ul>
 </div>

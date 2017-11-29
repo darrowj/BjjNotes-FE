@@ -21,34 +21,24 @@ export class AuthService {
     return Observable.fromPromise(
       this.afAuth.auth.signInWithEmailAndPassword(userName, password)
     );
-    //this.currentUser = {
-    //  id: Math.random(),
-    //  userName: userName,
-    //  firstName: 'John',
-    //  lastName: 'Papa'
-    //}
+
   }
 
   isAuthenticated(): Observable<boolean> {
     return this.user.map(user => user && user.uid !== undefined);
-    //return !!this.currentUser;
-  }
-
-  updateCurrentUser(firstName:string, lastName:string) {
-    this.currentUser.firstName = firstName;
-    this.currentUser.lastName = lastName;
   }
 
   loginWithGoogle() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
   }
 
   loginWithFacebook() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
   }
 
   loginWithTwitter() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
   }
 
   logout() {

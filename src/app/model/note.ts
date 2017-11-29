@@ -1,5 +1,6 @@
 export class Note {
   id?: string;
+  uid: string;
   title: string;
   category?: string;
   engagement?: string;
@@ -11,5 +12,6 @@ export class Note {
   description: string;
   created?: string;
   updated?: string;
+
 }
 

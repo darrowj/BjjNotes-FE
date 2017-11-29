@@ -23,6 +23,7 @@ import { LoginComponent } from "./user/login.component";
 import { ProfileComponent} from "./user/profile.component"
 import { Error404Component } from "./errors/404.component";
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
+import {HomeComponent} from "./home.component";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCT59Ad6E066OZlUaSn0pSjS8n97SeWzFU",
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     NoteEditComponent,
     Error404Component,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

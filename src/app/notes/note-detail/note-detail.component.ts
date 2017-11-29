@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { Note} from '../../model/note';
 import 'rxjs/Rx';
 import {Video} from "../../model/Video";
+import {AngularFireAuth} from "angularfire2/auth";
+import {AuthService} from "../../service/authService";
 
 @Component({
   selector: 'app-note-detail',
@@ -21,9 +23,19 @@ export class NoteDetailComponent implements OnInit {
   videoSearchString: string;
   errorMessage: string;
   searchCalled: boolean = false;
+  isLoggedIn: boolean = false;
+  userId: string;
 
+  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, public youtube: YouTubeService, private authService: AuthService) {
+    authService.isAuthenticated()
+      .subscribe(
+        success => this.isLoggedIn = success
+      );
 
-  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, public youtube: YouTubeService) { }
+    this.authService.afAuth.authState.subscribe(user => {
+      if(user) this.userId = user.uid
+    })
+  }
 
   ngOnInit() {
     this.route.params

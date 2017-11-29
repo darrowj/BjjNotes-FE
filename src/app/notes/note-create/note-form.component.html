@@ -67,10 +67,16 @@
   <div class="form-group row">
     <label for="description" class="col-2 col-form-label">Description</label>
     <div class="col-10">
-      <textarea class="form-control" rows="3" [(ngModel)]="note.description" name="description" id="description"></textarea>
+      <textarea class="form-control" rows="7" [(ngModel)]="note.description" name="description" id="description"></textarea>
     </div>
   </div>
 
+  <div class="form-group row">
+    <label for="published" class="col-2 col-form-label">Make Public?</label>
+    <div class="col-10 checkbox" style="margin-top: 12px;">
+      <input type="checkbox" class="form-control" [(ngModel)]="note.published" name="published" id="published">
+    </div>
+  </div>
 
   <button type="submit" class="btn btn-primary">Create</button>
   <a class="btn btn-secondary" [routerLink]="['/note-list']" role="button">Cancel</a>

@@ -1,13 +1,33 @@
-import { Router, ActivatedRouteSnapshot, CanActivate } from "@angular/router"
+import {Router, ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from "@angular/router"
 import { Injectable } from "@angular/core"
-import { NotesService } from './notes.service'
+import {AuthService} from "./authService";
+
+
 
 @Injectable()
 export class BjjNoteRouteActivator implements CanActivate {
-  constructor(private notesService:NotesService, private router:Router) {
 
+  public isLoggedIn: boolean = false;
+  public redirectUrl: string = '/404'
+
+  constructor(private router:Router, private authService: AuthService) {
+    authService.isAuthenticated()
+      .subscribe(
+        success => this.isLoggedIn = success
+      );
   }
 
+  public canActivate() {
+
+      if(this.isLoggedIn) {
+        return true;
+      }
+
+      this.router.navigate(['/404'])
+      return false;
+  }
+
+/*
   canActivate(route:ActivatedRouteSnapshot) {
     const note = this.notesService.getNote(route.params['noteId'])
 
@@ -17,4 +37,5 @@ export class BjjNoteRouteActivator implements CanActivate {
       this.router.navigate(['/404'])
     return true
   }
+*/
 }

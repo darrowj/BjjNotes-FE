@@ -1,6 +1,7 @@
 <h2>Update Note</h2>
 <form #noteForm="ngForm" class="editForm" (ngSubmit)="submitUpdateNote(noteForm.value)" novalidate>
   <input class="form-control" type="hidden" [(ngModel)]="note.id" name="id" id="id">
+  <input class="form-control" type="hidden" [(ngModel)]="note.uid" name="uid" id="uid">
   <input class="form-control" type="hidden" [(ngModel)]="note.created" name="created" id="created">
   <div class="form-group row">
     <label class="col-2 col-form-label">Title</label>
@@ -76,9 +77,17 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">Description</label>
     <div class="col-10">
-      <textarea class="form-control" rows="3" name="description" id="description" [(ngModel)]="note.description">{{note.description}}</textarea>
+      <textarea class="form-control" rows="7" name="description" id="description" [(ngModel)]="note.description">{{note.description}}</textarea>
     </div>
   </div>
+
+  <div class="form-group row">
+    <label for="published" class="col-2 col-form-label">Make Public?</label>
+    <div class="col-10 checkbox" style="margin-top: 12px;">
+      <input type="checkbox" class="form-control" [(ngModel)]="note.published" name="published" id="published">
+    </div>
+  </div>
+
 <button type="submit" [disabled]="noteForm.invalid" class="btn btn-primary">Save Changes</button>
 
   <a class="btn btn-secondary" href="" role="button">Back</a>

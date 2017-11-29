@@ -6,6 +6,7 @@ import { Note } from '../../model/note';
 import { Lookup } from '../../model/lookup';
 import { DatePipe } from '@angular/common';
 import 'rxjs/Rx';
+import {AngularFireAuth} from "angularfire2/auth";
 
 @Component({
   selector: 'app-note-form',
@@ -17,6 +18,7 @@ export class NoteFormComponent implements OnInit {
   note =
     {
       id: null,
+      uid: "",
       title: "Enter Title Here",
       category: "",
       description: "Enter Description Here",
@@ -25,7 +27,8 @@ export class NoteFormComponent implements OnInit {
       posture: "",
       offensivePosition: "",
       sweep: "",
-      submission: ""
+      submission: "",
+      published: ""
     }
 
   categories: Lookup = new Lookup();
@@ -37,10 +40,17 @@ export class NoteFormComponent implements OnInit {
   submissions: Lookup = new Lookup();
 
   errorMessage: string;
+  userId: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, private lookupService: LookupService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, private lookupService: LookupService, private afAuth: AngularFireAuth) {
+
+    this.afAuth.authState.subscribe(user => {
+      if(user) this.userId = user.uid
+    })
+  }
 
   submitNewNote() {
+      this.note.uid = this.userId;
 
       this.notesService.insertNote(this.note)
         .subscribe((note: Note) => {

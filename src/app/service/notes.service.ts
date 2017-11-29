@@ -13,13 +13,26 @@ import { Note } from '../model/note';
 export class NotesService {
 
   private _notesUrl = 'http://localhost:8080/Notes';
+  private _userNotesUrl = 'http://localhost:8080/UserNotes';
+  private _homeNotesUrl = 'http://localhost:8080/HomeNotes';
   private _noteCountUrl = 'http://localhost:8080/NoteCount';
+  private _homeNoteCountUrl = 'http://localhost:8080/HomeNoteCount';
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
 
-  getNotes(): Observable<Note[]> {
-    return this.http.get(this._notesUrl)
+  getNotes(uid: string): Observable<Note[]> {
+    return this.http.get(this._userNotesUrl  + '/' + uid)
+      .map((res: Response) => {
+        let notes = res.json();
+        return notes;
+      })
+      .catch(this.handleError);
+
+  }
+
+  getHomeNotes(): Observable<Note[]> {
+    return this.http.get(this._homeNotesUrl)
       .map((res: Response) => {
         let notes = res.json();
         return notes;
@@ -40,14 +53,20 @@ export class NotesService {
       .catch(this.handleError);
   }
 
-  getNoteCount(): Observable<string> {
-    return this.http.get(this._noteCountUrl)
+  getNoteCount(uid: string): Observable<string> {
+    return this.http.get(this._noteCountUrl  + '/' + uid)
+      .map((res: Response) => res.text())
+      .catch(this.handleError);
+  }
+
+  getHomeNoteCount(): Observable<string> {
+    return this.http.get(this._homeNoteCountUrl)
       .map((res: Response) => res.text())
       .catch(this.handleError);
   }
 
   insertNote(note: Note) : Observable<Note> {
-    console.log("This is the note being submitted: " + note.guard);
+    console.log("This is the note being submitted: " + note.uid);
     return this.http.post(this._notesUrl, note)
       .map((res: Response) => {
         let note = res.json();
