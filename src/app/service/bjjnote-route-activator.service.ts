@@ -7,7 +7,7 @@ import {AuthService} from "./authService";
 @Injectable()
 export class BjjNoteRouteActivator implements CanActivate {
 
-  public isLoggedIn: boolean = false;
+  public isLoggedIn: boolean;
   public redirectUrl: string = '/404'
 
   constructor(private router:Router, private authService: AuthService) {
@@ -15,6 +15,10 @@ export class BjjNoteRouteActivator implements CanActivate {
       .subscribe(
         success => this.isLoggedIn = success
       );
+  }
+
+  Oninit() {
+
   }
 
   public canActivate() {

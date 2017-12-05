@@ -27,19 +27,19 @@ export class NoteListComponent implements OnInit, OnDestroy, AfterContentInit {
   }
 
   ngOnInit() {
-    console.log("ngOnInit() called");
+    //console.log("ngOnInit() called");
     this.getNotesSubscription = this.notesService.getNotes(this.userId).subscribe(notes => this.notes = notes.reverse());
     this.getNoteCountSubscription = this.notesService.getNoteCount(this.userId).subscribe(count => this.nbNotes = count);
   }
 
   ngOnDestroy() {
-    console.log("ngOnDestroy() called");
+    //console.log("ngOnDestroy() called");
     this.getNotesSubscription.unsubscribe();
     this.getNoteCountSubscription.unsubscribe();
   }
 
   ngAfterContentInit() {
-    console.log("ngAfterContentInit() called");
+
 
   }
 

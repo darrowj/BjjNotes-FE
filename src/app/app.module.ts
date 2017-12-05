@@ -3,6 +3,7 @@ import { HttpModule } from "@angular/http";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
+import {NgxPaginationModule} from "ngx-pagination";
 
 // New imports to update based on AngularFire2 version 4
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -24,6 +25,7 @@ import { ProfileComponent} from "./user/profile.component"
 import { Error404Component } from "./errors/404.component";
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
 import {HomeComponent} from "./home.component";
+import {CreateBjjNoteRouteActivator} from "./service/createBjjNote-route-activator.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCT59Ad6E066OZlUaSn0pSjS8n97SeWzFU",
@@ -53,9 +55,10 @@ export const firebaseConfig = {
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxPaginationModule
   ],
-  providers: [NotesService, LookupService, BjjNoteRouteActivator, YouTubeService, AuthService, ProfileService ],
+  providers: [NotesService, LookupService, BjjNoteRouteActivator, CreateBjjNoteRouteActivator, YouTubeService, AuthService, ProfileService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

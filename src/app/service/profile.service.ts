@@ -13,6 +13,7 @@ import {AuthService} from "./authService";
 export class ProfileService {
 
   private _profileUrl = 'http://localhost:8080/Profile';
+  private _profileCheckUrl = 'http://localhost:8080/CheckProfileExists';
   private headers = new Headers({ 'Content-Type': 'application/json' });
   userId: string;
 
@@ -26,10 +27,23 @@ export class ProfileService {
   getProfile(uid: string): Observable<Profile> {
 
     return this.http.get(this._profileUrl  + '/' + uid)
-      .map((res: Response) => res.json())
+      .map((res: Response) => {
+        let profile = res.json();
+        console.log('GetProfile status: ' + profile.uid);
+        return profile;
+      })
       .catch(this.handleError);
 
   }
+
+  checkProfileExists(uid: string): Observable<Profile> {
+
+    return this.http.get(this._profileCheckUrl  + '/' + uid)
+      .map((res: Response) => res.text())
+      .catch(this.handleError);
+
+  }
+
 
   public deleteProfileById(uid: string)  : Observable<string> {
     return this.http.delete(this._profileUrl  + '/' + uid)
@@ -42,7 +56,7 @@ export class ProfileService {
     //console.log("This is the profile being submitted: " + profile.yearborn);
     return this.http.post(this._profileUrl, profile)
       .map((res: Response) => {
-       let note = res.json();
+       let profile = res.json();
         //console.log('Insert Profile status: ' + profile);
         return profile;
       })

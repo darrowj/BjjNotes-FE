@@ -7,6 +7,9 @@ import { Lookup } from '../../model/lookup';
 import { DatePipe } from '@angular/common';
 import 'rxjs/Rx';
 import {AngularFireAuth} from "angularfire2/auth";
+import {AuthService} from "../../service/authService";
+import {ProfileService} from "../../service/profile.service";
+
 
 @Component({
   selector: 'app-note-form',
@@ -38,11 +41,18 @@ export class NoteFormComponent implements OnInit {
   offensivePositions: Lookup = new Lookup();
   sweeps: Lookup = new Lookup();
   submissions: Lookup = new Lookup();
+  public isLoggedIn: boolean;
 
   errorMessage: string;
   userId: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService, private lookupService: LookupService, private afAuth: AngularFireAuth) {
+  constructor(private router: Router, private route: ActivatedRoute, private notesService: NotesService,
+              private lookupService: LookupService, private authService: AuthService,
+              private profileService: ProfileService, private afAuth: AngularFireAuth) {
+    authService.isAuthenticated()
+      .subscribe(
+        success => this.isLoggedIn = success
+      );
 
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
@@ -65,6 +75,19 @@ export class NoteFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    var profileCheck
+    if(!this.isLoggedIn) {
+      this.router.navigate(['/404'])
+    }
+
+    this.profileService.checkProfileExists(this.userId).subscribe(count => {
+      profileCheck = count;
+      if (profileCheck != 1) {
+        this.router.navigate(['/profile']);
+      }
+    });
+
+
 
     this.lookupService.getLookup("Engagement").subscribe(lookup => this.engagement = lookup);
     this.lookupService.getLookup("Guards").subscribe(lookup => this.guards = lookup);

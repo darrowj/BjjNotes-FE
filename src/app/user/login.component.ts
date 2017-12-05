@@ -16,30 +16,22 @@ export class LoginComponent {
   public user$ = this.authService.user;
   public isLoggedIn;
   userId: string;
+  success: boolean;
 
-  constructor(private router:Router, private authService: AuthService, private profileService: ProfileService) {
+
+  constructor(private router:Router, private authService: AuthService) {
     authService.isAuthenticated()
       .subscribe(
         success => this.isLoggedIn = success
       );
 
-    this.authService.afAuth.authState.subscribe(user => {
-      if(user) this.userId = user.uid
-    })
+    this.setUserId();
   }
 
   login(formValues) {
     this.authService.loginUser(formValues.userName, formValues.password)
-      .subscribe(
-        (success) => {
-          if (this.hasProfile())
-            this.router.navigate(['/'])
-          else
-            this.router.navigate(['/profile'])
-        },
-        error => alert(error)
-      )
-
+      .subscribe((res) => {this.router.navigate(['/'])},
+        error => alert(error));
   }
 
   cancel() {
@@ -47,12 +39,8 @@ export class LoginComponent {
   }
 
   loginWithGoogle() {
-    this.authService.loginWithGoogle().then(
-      (success) => {
-        if (this.hasProfile())
-          this.router.navigate(['/'])
-        else
-          this.router.navigate(['/profile'])
+    this.authService.loginWithGoogle().then((res) => {
+      this.router.navigate(['/'])
     })
       .catch((err) => console.log(err));
   }
@@ -71,14 +59,10 @@ export class LoginComponent {
       .catch((err) => console.log(err));
   }
 
-  hasProfile(): boolean{
-    let profileCheck: Profile = new Profile();
-    this.profileService.getProfile(this.userId).subscribe(profile => profileCheck = profile);
-    if(profileCheck.uid != undefined) {
-      return true;
-    } else {
-      return false;
-    }
 
+  setUserId() {
+    this.authService.afAuth.authState.subscribe(user => {
+      if(user) this.userId = user.uid
+    })
   }
 }
