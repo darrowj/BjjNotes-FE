@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import {NgxPaginationModule} from "ngx-pagination";
 
+
 // New imports to update based on AngularFire2 version 4
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -58,7 +59,11 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     NgxPaginationModule
   ],
-  providers: [NotesService, LookupService, BjjNoteRouteActivator, CreateBjjNoteRouteActivator, YouTubeService, AuthService, ProfileService ],
+  providers: [NotesService,
+              LookupService,
+              BjjNoteRouteActivator,
+              CreateBjjNoteRouteActivator,
+     YouTubeService, AuthService, ProfileService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

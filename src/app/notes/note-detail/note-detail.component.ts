@@ -4,9 +4,6 @@ import { NotesService} from '../../service/notes.service';
 import {YouTubeService} from '../../service/youtube.service';
 import { Observable } from 'rxjs/Observable';
 import { Note} from '../../model/note';
-import 'rxjs/Rx';
-import {Video} from "../../model/Video";
-import {AngularFireAuth} from "angularfire2/auth";
 import {AuthService} from "../../service/authService";
 
 @Component({

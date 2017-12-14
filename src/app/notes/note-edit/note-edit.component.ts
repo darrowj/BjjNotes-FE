@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotesService} from '../../service/notes.service';
 import { Note} from '../../model/note';
-import 'rxjs/Rx';
 import { Lookup } from '../../model/lookup';
 import { LookupService} from '../../service/lookup.service';
 

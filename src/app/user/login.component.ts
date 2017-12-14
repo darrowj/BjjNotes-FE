@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../service/authService'
 import { Router } from '@angular/router'
-import {Observable} from "rxjs/Observable";
-import {ProfileService} from "../service/profile.service";
-import {Profile} from "../model/profile";
 
 @Component({
   templateUrl: './login.component.html',

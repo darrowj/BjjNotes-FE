@@ -3,7 +3,6 @@ import { TruncateModule } from 'ng2-truncate'
 import { ISubscription } from "rxjs/Subscription";
 import { NotesService} from '../../service/notes.service';
 import { Note} from '../../model/note';
-import 'rxjs/Rx';
 import {AngularFireAuth} from "angularfire2/auth";
 
 @Component({

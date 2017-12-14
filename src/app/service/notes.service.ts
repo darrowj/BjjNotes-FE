@@ -6,17 +6,18 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
-
 import { Note } from '../model/note';
+import * as AppConfig from '../config/app-config';
 
 @Injectable()
 export class NotesService {
 
-  private _notesUrl = 'http://localhost:8080/Notes';
-  private _userNotesUrl = 'http://localhost:8080/UserNotes';
-  private _homeNotesUrl = 'http://localhost:8080/HomeNotes';
-  private _noteCountUrl = 'http://localhost:8080/NoteCount';
-  private _homeNoteCountUrl = 'http://localhost:8080/HomeNoteCount';
+  config = AppConfig.CONFIG;
+  private _notesUrl = this.config['_notesUrl'];
+  private _userNotesUrl = this.config['_userNotesUrl'];
+  private _homeNotesUrl = this.config['_homeNotesUrl'];
+  private _noteCountUrl = this.config['_noteCountUrl'];
+  private _homeNoteCountUrl = this.config['_homeNoteCountUrl'];
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }

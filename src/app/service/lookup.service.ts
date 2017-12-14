@@ -6,14 +6,15 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
-
 import { Lookup } from '../model/lookup';
+import * as AppConfig from '../config/app-config';
 
 @Injectable()
 export class LookupService {
 
-  private _lookupUrl = 'http://localhost:8080/Lookup';
-  //private lookup: Lookup = new Lookup();
+  config = AppConfig.CONFIG;
+
+  private _lookupUrl = this.config['_lookupUrl'];
 
   constructor(private http: Http) { }
 

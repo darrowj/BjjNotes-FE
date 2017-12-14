@@ -4,8 +4,6 @@ import { NotesService} from '../../service/notes.service';
 import { LookupService} from '../../service/lookup.service';
 import { Note } from '../../model/note';
 import { Lookup } from '../../model/lookup';
-import { DatePipe } from '@angular/common';
-import 'rxjs/Rx';
 import {AngularFireAuth} from "angularfire2/auth";
 import {AuthService} from "../../service/authService";
 import {ProfileService} from "../../service/profile.service";
@@ -33,6 +31,7 @@ export class NoteFormComponent implements OnInit {
       submission: "",
       published: ""
     }
+
 
   categories: Lookup = new Lookup();
   engagement: Lookup = new Lookup();

@@ -5,7 +5,6 @@ import { AuthService } from '../service/authService'
 import {Profile} from "../model/profile";
 import {ProfileService} from "../service/profile.service";
 import {async} from "rxjs/scheduler/async";
-import * as firebase from "firebase";
 import {AngularFireAuth} from "angularfire2/auth";
 
 
