@@ -17,6 +17,7 @@ export class NoteListComponent implements OnInit, OnDestroy, AfterContentInit {
   private getNoteCountSubscription: ISubscription;
   notes: Note[];
   userId: string;
+  p: any;
 
 
   constructor(private notesService: NotesService, private afAuth: AngularFireAuth  ) {

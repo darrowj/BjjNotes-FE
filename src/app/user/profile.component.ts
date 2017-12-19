@@ -59,7 +59,8 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  submitNewProfile() {
+  submitNewProfile(profileFormValues) {
+      this.profile = profileFormValues;
       this.profile.uid = this.userId;
 
       this.profileService.insertProfile(this.profile)

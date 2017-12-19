@@ -10,6 +10,7 @@ import { ProfileComponent } from "./user/profile.component"
 import {HomeComponent} from "./home.component";
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
 import {CreateBjjNoteRouteActivator} from "./service/createBjjNote-route-activator.service";
+import {GeneralPagesComponent} from "./general/general-pages.component";
 
 
 const routes: Routes = [
@@ -21,6 +22,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'profile/:profileId', component: ProfileComponent},
+  { path: 'aboutus', component: GeneralPagesComponent},
+  { path: 'contactus', component: GeneralPagesComponent},
+  { path: 'privacy', component: GeneralPagesComponent},
   { path: '404', component: Error404Component },
 
 ];

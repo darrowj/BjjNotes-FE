@@ -27,6 +27,7 @@ import { Error404Component } from "./errors/404.component";
 import { BjjNoteRouteActivator } from "./service/bjjnote-route-activator.service"
 import {HomeComponent} from "./home.component";
 import {CreateBjjNoteRouteActivator} from "./service/createBjjNote-route-activator.service";
+import { GeneralPagesComponent } from "./general/general-pages.component"
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCT59Ad6E066OZlUaSn0pSjS8n97SeWzFU",
@@ -47,7 +48,8 @@ export const firebaseConfig = {
     Error404Component,
     LoginComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    GeneralPagesComponent
   ],
   imports: [
     BrowserModule,

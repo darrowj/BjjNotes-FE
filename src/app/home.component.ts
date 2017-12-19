@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
   private getNotesSubscription: ISubscription;
   private getNoteCountSubscription: ISubscription;
   notes: Note[];
+  p: any;
 
 
   constructor(private notesService: NotesService) { }

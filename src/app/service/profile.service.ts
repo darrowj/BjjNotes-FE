@@ -5,15 +5,16 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
-
 import {Profile} from "../model/profile";
 import {AuthService} from "./authService";
+import * as AppConfig from '../config/app-config';
 
 @Injectable()
 export class ProfileService {
 
-  private _profileUrl = 'http://localhost:8080/Profile';
-  private _profileCheckUrl = 'http://localhost:8080/CheckProfileExists';
+  config = AppConfig.CONFIG;
+  private _profileUrl = this.config['_profileUrl'];//'http://localhost:8080/Profile';
+  private _profileCheckUrl = this.config['_profileCheckUrl'];//'http://localhost:8080/CheckProfileExists';
   private headers = new Headers({ 'Content-Type': 'application/json' });
   userId: string;
 

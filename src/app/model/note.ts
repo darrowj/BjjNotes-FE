@@ -10,6 +10,7 @@ export class Note {
   sweep?: string;
   submission?: string;
   description: string;
+  published?:string;
   created?: string;
   updated?: string;
 

@@ -1,9 +1,29 @@
 /*!
  *  Just some custom CSS for the site not covered in Bootstrap etc...
  */
+.about {
+  color: #555f77 !important;
+}
 
 .center-block {
   margin-left:auto;
   margin-right:auto;
   display:block;
+}
+
+#aboutus-head {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.aboutus-text {
+  text-align: center;
+}
+
+.image-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
 }

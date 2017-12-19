@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 export class AppComponent {
 
   public isLoggedIn;
-  title = 'BJJ Notes';
+  title = 'BJJ Dose';
   user$ = this.authService.user;
   userId: string;
 
