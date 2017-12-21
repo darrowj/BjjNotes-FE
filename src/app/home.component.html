@@ -1,5 +1,7 @@
-<h4>Number of Notes on Site: {{nbNotes}}</h4>
-<div class="row card-group">
+<div class="row header-row" >
+<bjjimage></bjjimage>&nbsp;# of Doses on Site: {{nbNotes}}
+</div>
+<div class="row card-group" style="margin-top:5px;">
     <div class="col-6"  *ngFor="let note of notes | paginate: {itemsPerPage:4, currentPage: p }">
       <div class="card">
         <h3 class="card-header"><a [routerLink]="['/note-detail', note.id]">{{note.title}}</a></h3>

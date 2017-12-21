@@ -1,4 +1,6 @@
-<h4>Number of Your Notes: {{nbNotes}}</h4>
+<div class="row header-row" >
+  <bjjimage></bjjimage>&nbsp;Your Doses: {{nbNotes}}
+</div>
 <div class="row card-group">
   <div class="col-6"  *ngFor="let note of notes | paginate: {itemsPerPage:4, currentPage: p }">
       <div class="card">
@@ -12,6 +14,8 @@
       </div>
       <br />
     </div>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<div class="row center-block">
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 

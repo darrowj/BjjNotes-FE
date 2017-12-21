@@ -4,6 +4,7 @@ import { ISubscription } from "rxjs/Subscription";
 import { NotesService} from '../../service/notes.service';
 import { Note} from '../../model/note';
 import {AngularFireAuth} from "angularfire2/auth";
+//import { GeneralPagesComponent} from "../../general/image-generator.component";
 
 @Component({
   selector: 'app-note-list',
