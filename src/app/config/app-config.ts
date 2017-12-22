@@ -1,4 +1,4 @@
-
+/**
 export const CONFIG : { [key:string]:string; } = {
   "_lookupUrl" : "http://localhost:8080/Lookup",
   "_notesUrl" : "http://localhost:8080/Notes",
@@ -9,9 +9,9 @@ export const CONFIG : { [key:string]:string; } = {
   "_profileUrl" : "http://localhost:8080/Profile",
   "_profileCheckUrl" : "http://localhost:8080/CheckProfileExists"
 };
+*/
 
 
-/**
 export const CONFIG : { [key:string]:string; } = {
   "_lookupUrl" : "http://www.bjjdose.com:8080/Lookup",
   "_notesUrl" : "http://www.bjjdose.com:8080/Notes",
@@ -22,5 +22,5 @@ export const CONFIG : { [key:string]:string; } = {
   "_profileUrl" : "http://www.bjjdose.com:8080/Profile",
   "_profileCheckUrl" : "http://www.bjjdose.com:8080/CheckProfileExists"
 };
- */
+
 

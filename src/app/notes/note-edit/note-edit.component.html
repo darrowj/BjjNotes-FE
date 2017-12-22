@@ -1,4 +1,6 @@
-<h5>Update Dose</h5>
+<div class="row bjj-header-row" >
+  <bjjimage></bjjimage><span class="bjj-header-text">Update Dose</span>
+</div>
 <form #noteForm="ngForm" class="editForm" (ngSubmit)="submitUpdateNote(noteForm.value)" novalidate>
   <input class="form-control" type="hidden" [(ngModel)]="note.id" name="id" id="id">
   <input class="form-control" type="hidden" [(ngModel)]="note.uid" name="uid" id="uid">

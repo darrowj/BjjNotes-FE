@@ -1,5 +1,5 @@
-<div class="row header-row" >
-<bjjimage></bjjimage>&nbsp;# of Doses on Site: {{nbNotes}}
+<div class="row bjj-header-row" >
+  <bjjimage></bjjimage><span class="bjj-header-text"># of Doses on Site: {{nbNotes}}</span>
 </div>
 <div class="row card-group" style="margin-top:5px;">
     <div class="col-6"  *ngFor="let note of notes | paginate: {itemsPerPage:4, currentPage: p }">
@@ -14,6 +14,7 @@
       </div>
       <br />
      </div>
+</div>
+<div class="row center-block">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
-
